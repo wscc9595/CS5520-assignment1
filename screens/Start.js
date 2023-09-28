@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import Checkbox from 'expo-checkbox'
 import React from 'react'
-
-const starting = () => {
+import { useState } from 'react';
+const Start = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -80,7 +81,7 @@ const starting = () => {
         />
         <Text style={styles.errorText}>{phoneError}</Text>
 
-        <CheckBox
+        <Checkbox
           value={isChecked}
           onValueChange={(value) => setIsChecked(value)}
         />
@@ -101,6 +102,6 @@ const starting = () => {
   )
 }
 
-export default starting
+export default Start  
 
 const styles = StyleSheet.create({})

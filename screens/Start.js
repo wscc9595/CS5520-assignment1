@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import React from 'react'
 import { useState } from 'react';
-const Start = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+import Card from "../components/Card"
+const Start = ({handleCurrentPage, handleUserInfo, userInfo}) => {
+    const [name, setName] = useState(userInfo.name);
+    const [email, setEmail] = useState(userInfo.email);
+    const [phone, setPhone] = useState(userInfo.phone);
     const [isChecked, setIsChecked] = useState(false);
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -39,6 +40,12 @@ const Start = () => {
         validateName();
         validateEmail();
         validatePhone();
+        if (!nameError && !emailError && !phoneError && isChecked) {
+          handleCurrentPage("Confirm");
+          handleUserInfo({name, email, phone});
+        }
+
+
 
 
     }
@@ -53,7 +60,7 @@ const Start = () => {
     }
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
+      <Card>
         <Text>Name:</Text>
         <TextInput
           style={styles.input}
@@ -97,7 +104,7 @@ const Start = () => {
           onPress={handleStart}
           disabled={!isChecked}
         />
-      </View>
+      </Card>
     </View>
   )
 }

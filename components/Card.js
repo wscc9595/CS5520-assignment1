@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import {card} from "../colors"
+import {colors} from "../colors"
 
 const Card = ({children}) => {
   return (
@@ -14,7 +14,11 @@ export default Card
 
 const styles = StyleSheet.create({
     card: {
-        borderColor: card,
-        borderWidth: 1,
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      elevation: Platform.OS === 'android' ? 3 : 0, 
+      shadowOffset: { width: 0, height: 1 },
+      shadowRadius: 2,
+      shadowOpacity: 0.5,
     }
 })

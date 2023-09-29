@@ -1,1 +1,1 @@
-export const card = "red";
+export const colors ={card :"grey", screenStart:'#4c669f', screenMid:'pink', screenEnd:'white'};

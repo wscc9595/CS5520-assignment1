@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import Start from './screens/Start';
 import Confirm from './screens/Confirm';
 import Game from './screens/Game';
+import { colors } from './colors';
 
 export default function App() {
   const [randomNumber, setRandomNumber] = useState(null);
@@ -26,7 +28,10 @@ export default function App() {
     setUserInfo(info);
   }
   return (
-    <View style={styles.container}>
+    <LinearGradient
+    colors={[colors.screenStart, colors.screenMid, colors.screenEnd]} 
+      style={styles.container}>
+      <View>
       {currentPage === 'Start' && (
         <Start handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo} userInfo={userInfo}/>
       )}
@@ -40,13 +45,15 @@ export default function App() {
 
       <StatusBar style="auto" />
     </View>
+    </LinearGradient>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+
     alignItems: 'center',
     justifyContent: 'center',
   },

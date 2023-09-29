@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
+import Card from '../components/Card';
 
 const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, resetNum}) => {
     const [userGuess, setUserGuess] = useState("");
@@ -47,29 +48,40 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                 <Button title='Logout' onPress={onLogOut} ></Button>
                 </View>
                 <Text>Please guess a number between 10 and 20.</Text>
+                <Card>
                 <Text>Enter a number</Text>
                 
                 <TextInput value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
                 <Button title='Reset' onPress={onReset}></Button>
                 <Button title='Confirm' onPress={onConfirm}></Button>
+                </Card>
+                
             </View>
         )
     }
     if(currentState == 'inCorrect'){
         return (
             <View>
+                <Button title='Logout' onPress={onLogOut} ></Button>
+                <Card>
                 <Text>"incorrect"</Text>
                 <Image style={styles.image} source={require("../assets/sad.jpeg")} />
                 <Button title='Try Again' onPress={onTryAgain}></Button>
+                </Card>
+                
             </View>
         )
     }
     if(currentState == 'correct'){
         return (
             <View>
+                <Button title='Logout' onPress={onLogOut} ></Button>
+                <Card>
                 <Text>"You're correct through {count} guesses."</Text>
                 <Image style={styles.image} source={{uri: 'https://picsum.photos/id/${randomNumber}/100/100'}} />
                 <Button title='New Game' onPress={onNewGame}></Button>
+                </Card>
+                
             </View>
         )
     }

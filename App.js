@@ -39,13 +39,18 @@ export default function App() {
         <Game handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo} 
         randomNumber={randomNumber} generateNum={generateNum} resetNum={resetNum} />
       )}
+       
+       
+      
       <Confirm handleCurrentPage={handleCurrentPage} visible={currentPage === "Confirm"} userInfo={userInfo}
       generateNum={generateNum} />
-
+      
+      
 
       <StatusBar style="auto" />
     </View>
     </LinearGradient>
+   
     
   );
 }

@@ -49,11 +49,15 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                 </View>
                 <Text>Please guess a number between 10 and 20.</Text>
                 <Card>
-                <Text>Enter a number</Text>
+                    <View style={styles.prompt}><Text>Enter a number</Text></View>
                 
-                <TextInput value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
+                
+                <TextInput style={styles.input} value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
+                <View style={styles.buttonBox}>
                 <Button title='Reset' onPress={onReset}></Button>
                 <Button title='Confirm' onPress={onConfirm}></Button>
+                </View>
+                
                 </Card>
                 
             </View>
@@ -61,12 +65,20 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
     }
     if(currentState == 'inCorrect'){
         return (
-            <View>
+            <View style={styles.container}>
+                <View style={styles.logoutButtonContainer}>
                 <Button title='Logout' onPress={onLogOut} ></Button>
+                </View>
                 <Card>
-                <Text>"incorrect"</Text>
+                    <View style={styles.incorrectInfo}>
+                    <Text>"incorrect"</Text>
                 <Image style={styles.image} source={require("../assets/sad.jpeg")} />
+                    </View>
+                
+                <View style={styles.try}>
                 <Button title='Try Again' onPress={onTryAgain}></Button>
+                </View>
+                
                 </Card>
                 
             </View>
@@ -74,12 +86,18 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
     }
     if(currentState == 'correct'){
         return (
-            <View>
+            <View style={styles.container}>
+                <View style={styles.logoutButtonContainer}>
                 <Button title='Logout' onPress={onLogOut} ></Button>
+                </View>
                 <Card>
+                <View style={styles.incorrectInfo}>
                 <Text>"You're correct through {count} guesses."</Text>
-                <Image style={styles.image} source={{uri: 'https://picsum.photos/id/${randomNumber}/100/100'}} />
+                <Image style={styles.image} source={{uri: `https://picsum.photos/id/${randomNumber}/100/100`}} />
+                </View>
+                <View style={styles.try}>
                 <Button title='New Game' onPress={onNewGame}></Button>
+                </View>
                 </Card>
                 
             </View>
@@ -104,4 +122,30 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
       },
+      prompt: {
+        flexDirection:"row",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    buttonBox: {
+        flex: 1,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent: "space-evenly"
+    },
+    input:{
+        borderBottomWidth: 1, 
+        borderBottomColor: 'gray',
+        paddingHorizontal: 10,
+    
+    },
+    incorrectInfo: {
+        flex:2,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    try: {
+        flex:1
+
+    }
 })

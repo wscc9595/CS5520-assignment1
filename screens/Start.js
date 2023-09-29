@@ -2,9 +2,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import React from 'react'
 import { useState } from 'react';
-import Card from "../components/Card"
-import MyText from '../components/MyText';
-import MyButton from '../components/MyButton';
+import Card from "../components/Card";
 const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
   const [name, setName] = useState(userInfo.name);
   const [email, setEmail] = useState(userInfo.email);
@@ -70,6 +68,7 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
   return (
     <View style={styles.container}>
       <Card>
+        <View style={styles.inputBox}>
         <Text>Name:</Text>
         <TextInput
           style={styles.input}
@@ -86,31 +85,38 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
         />
         <Text style={styles.errorText}>{emailError}</Text>
 
-        {/* <Text>Phone:</Text> */}
-        <MyText data="Phone" />
+        <Text>Phone:</Text>
+  
         <TextInput
           style={styles.input}
           value={phone}
           onChangeText={(text) => setPhone(text)}
         />
         <Text style={styles.errorText}>{phoneError}</Text>
-
+        </View>
+        <View style={styles.checkBox}>
         <Checkbox
           value={isChecked}
           onValueChange={(value) => setIsChecked(value)}
         />
         <Text>I agree to the terms and conditions</Text>
-
-        {/* <Button
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button
           title="Reset"
           onPress={handleReset}
-        /> */}
-        <MyButton titleText="Reset" pressedFucntion={handleReset} />
+        />
+        
         <Button
           title="Start"
           onPress={handleStart}
           disabled={!isChecked}
         />
+        </View>
+
+        
+
+        
       </Card>
     </View>
   )
@@ -118,4 +124,31 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
 
 export default Start
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+  inputBox: {
+    flex: 3,
+    alignItems:"stretch"
+
+  },
+  checkBox: {
+    flex: 1,
+    flexDirection:"row",
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent: "space-evenly"
+  },
+  input:{
+    borderBottomWidth: 1, 
+    borderBottomColor: 'gray'
+
+}
+
+
+
+})

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card';
+import { colors } from '../colors';
 
 const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, resetNum}) => {
     const [userGuess, setUserGuess] = useState("");
@@ -47,14 +48,14 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                 <View style={styles.logoutButtonContainer}>
                 <Button title='Logout' onPress={onLogOut} ></Button>
                 </View>
-                <Text>Please guess a number between 10 and 20.</Text>
+                <Text style={styles.game}>Please guess a number between 10 and 20.</Text>
                 <Card>
                     <View style={styles.prompt}><Text>Enter a number</Text></View>
                 
                 
                 <TextInput style={styles.input} value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
                 <View style={styles.buttonBox}>
-                <Button title='Reset' onPress={onReset}></Button>
+                <Button title='Reset' color={colors.reset} onPress={onReset}></Button>
                 <Button title='Confirm' onPress={onConfirm}></Button>
                 </View>
                 
@@ -71,7 +72,7 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                 </View>
                 <Card>
                     <View style={styles.incorrectInfo}>
-                    <Text>"incorrect"</Text>
+                    <Text style={styles.incorrect}>incorrect</Text>
                 <Image style={styles.image} source={require("../assets/sad.jpeg")} />
                     </View>
                 
@@ -92,7 +93,7 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                 </View>
                 <Card>
                 <View style={styles.incorrectInfo}>
-                <Text>"You're correct through {count} guesses."</Text>
+                <Text style={styles.incorrect}>You're correct by {count} guesses.</Text>
                 <Image style={styles.image} source={{uri: `https://picsum.photos/id/${randomNumber}/100/100`}} />
                 </View>
                 <View style={styles.try}>
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1, 
         borderBottomColor: 'gray',
         paddingHorizontal: 10,
+        margin: 100
     
     },
     incorrectInfo: {
@@ -147,5 +149,13 @@ const styles = StyleSheet.create({
     try: {
         flex:1
 
+    },
+    game: {
+        font: 24,
+        fontWeight: 'bold', 
+        margin: 10,
+    },
+    incorrect:{
+        margin:20
     }
 })

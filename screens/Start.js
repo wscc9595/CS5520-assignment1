@@ -3,6 +3,7 @@ import Checkbox from 'expo-checkbox'
 import React from 'react'
 import { useState } from 'react';
 import Card from "../components/Card";
+import { colors } from '../colors';
 const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
   const [name, setName] = useState(userInfo.name);
   const [email, setEmail] = useState(userInfo.email);
@@ -104,6 +105,7 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
         <View style={styles.buttonContainer}>
         <Button
           title="Reset"
+          color={colors.reset}
           onPress={handleReset}
         />
         

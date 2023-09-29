@@ -22,13 +22,14 @@ const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
       >
             <Card style={styles.confirmCard}>
                 <View style={styles.info}>
-                <Text>Name: {userInfo.name}</Text>
-                <Text>Email: {userInfo.email}</Text>
-                <Text>Phone: {userInfo.phone}</Text>
+                <Text>Please have a check:</Text>
+                <Text style={styles.infoConfirm}>Name: {userInfo.name}</Text>
+                <Text style={styles.infoConfirm}>Email: {userInfo.email}</Text>
+                <Text style={styles.infoConfirm}>Phone: {userInfo.phone}</Text>
                 </View>
                 
                 <View style={styles.buttonBox}>
-                <Button title="Go back" onPress={onBack} />
+                <Button title="Go back" color={colors.reset} onPress={onBack} />
                 <Button title="Continue" onPress={onContinue} />
                 </View>
                 
@@ -66,6 +67,10 @@ const styles = StyleSheet.create({
     info: {
         flex: 0.05,
         alignItems:"stretch"
+    },
+    infoConfirm:{
+        color: colors.info,
+
     }
 
 })

@@ -21,37 +21,37 @@ export default function App() {
   function resetNum() {
     setRandomNumber(null);
   }
-  function handleCurrentPage(page){
+  function handleCurrentPage(page) {
     setCurrentPage(page);
   }
-  function handleUserInfo(info){
+  function handleUserInfo(info) {
     setUserInfo(info);
   }
   return (
     <LinearGradient
-    colors={[colors.screenStart, colors.screenMid, colors.screenEnd]} 
+      colors={[colors.screenStart, colors.screenMid, colors.screenEnd]}
       style={styles.container}>
       <View>
-      {currentPage === 'Start' && (
-        <Start handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo} userInfo={userInfo}/>
-      )}
-      {currentPage === 'Game' && (
-        <Game handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo} 
-        randomNumber={randomNumber} generateNum={generateNum} resetNum={resetNum} />
-      )}
-       
-       
-      
-      <Confirm handleCurrentPage={handleCurrentPage} visible={currentPage === "Confirm"} userInfo={userInfo}
-      generateNum={generateNum} />
-      
-      
+        {currentPage === 'Start' && (
+          <Start handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo} userInfo={userInfo} />
+        )}
+        {currentPage === 'Game' && (
+          <Game handleCurrentPage={handleCurrentPage} handleUserInfo={handleUserInfo}
+            randomNumber={randomNumber} generateNum={generateNum} resetNum={resetNum} />
+        )}
 
-      <StatusBar style="auto" />
-    </View>
+
+
+        <Confirm handleCurrentPage={handleCurrentPage} visible={currentPage === "Confirm"} userInfo={userInfo}
+          generateNum={generateNum} />
+
+
+
+        <StatusBar style="auto" />
+      </View>
     </LinearGradient>
-   
-    
+
+
   );
 }
 

@@ -5,10 +5,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../colors';
 
 const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
-    function onBack(){
+    function onBack() {
         handleCurrentPage("Start");
     }
-    function onContinue(){
+    function onContinue() {
         handleCurrentPage("Game");
         generateNum();
 
@@ -16,31 +16,31 @@ const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
     return (
         <View style={styles.container}>
             <Modal visible={visible}>
-            <LinearGradient
-        colors={[colors.screenStart, colors.screenMid, colors.screenEnd]} 
-        style={styles.confirmContainer}
-      >
-            <Card style={styles.confirmCard}>
-                <View style={styles.info}>
-                <Text>Please have a check:</Text>
-                <Text style={styles.infoConfirm}>Name: {userInfo.name}</Text>
-                <Text style={styles.infoConfirm}>Email: {userInfo.email}</Text>
-                <Text style={styles.infoConfirm}>Phone: {userInfo.phone}</Text>
-                </View>
-                
-                <View style={styles.buttonBox}>
-                <Button title="Go back" color={colors.reset} onPress={onBack} />
-                <Button title="Continue" onPress={onContinue} />
-                </View>
-                
-            </Card>
-            </LinearGradient>
-        </Modal>
+                <LinearGradient
+                    colors={[colors.screenStart, colors.screenMid, colors.screenEnd]}
+                    style={styles.confirmContainer}
+                >
+                    <Card style={styles.confirmCard}>
+                        <View style={styles.info}>
+                            <Text>Please have a check:</Text>
+                            <Text style={styles.infoConfirm}>Name: {userInfo.name}</Text>
+                            <Text style={styles.infoConfirm}>Email: {userInfo.email}</Text>
+                            <Text style={styles.infoConfirm}>Phone: {userInfo.phone}</Text>
+                        </View>
+
+                        <View style={styles.buttonBox}>
+                            <Button title="Go back" color={colors.reset} onPress={onBack} />
+                            <Button title="Continue" onPress={onContinue} />
+                        </View>
+
+                    </Card>
+                </LinearGradient>
+            </Modal>
         </View>
-        
-        
-        
-        
+
+
+
+
 
     )
 }
@@ -50,25 +50,25 @@ export default Confirm
 const styles = StyleSheet.create({
     confirmContainer: {
         justifyContent: "center",
-        flex:1,
+        flex: 1,
         alignItems: 'center',
 
     },
     confirmCard: {
-        alignItems:"stretch"
+        alignItems: "stretch"
 
     },
     buttonBox: {
         flex: 1,
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent: "space-evenly"
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-evenly"
     },
     info: {
         flex: 0.05,
-        alignItems:"stretch"
+        alignItems: "stretch"
     },
-    infoConfirm:{
+    infoConfirm: {
         color: colors.info,
 
     }

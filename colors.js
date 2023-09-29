@@ -1,1 +1,1 @@
-export const colors ={card : '#FFD700', screenStart:'#4c669f', screenMid:'pink', screenEnd:'white', reset:"red", info:"purple"};
+export const colors = { card: '#FFD700', screenStart: '#4c669f', screenMid: 'pink', screenEnd: 'white', reset: "red", info: "purple" };

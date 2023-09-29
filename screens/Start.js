@@ -47,7 +47,7 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
     validateName();
     validateEmail();
     validatePhone();
-    if ( validateName() &&  validateEmail() && validatePhone() && isChecked) {
+    if (validateName() && validateEmail() && validatePhone() && isChecked) {
 
       handleCurrentPage("Confirm");
       handleUserInfo({ name, email, phone });
@@ -70,55 +70,55 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
     <View style={styles.container}>
       <Card>
         <View style={styles.inputBox}>
-        <Text>Name:</Text>
-        <TextInput
-          style={styles.input}
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
-        <Text style={styles.errorText}>{nameError}</Text>
+          <Text>Name:</Text>
+          <TextInput
+            style={styles.input}
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
+          <Text style={styles.errorText}>{nameError}</Text>
 
-        <Text>Email:</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Text style={styles.errorText}>{emailError}</Text>
+          <Text>Email:</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <Text style={styles.errorText}>{emailError}</Text>
 
-        <Text>Phone:</Text>
-  
-        <TextInput
-          style={styles.input}
-          value={phone}
-          onChangeText={(text) => setPhone(text)}
-        />
-        <Text style={styles.errorText}>{phoneError}</Text>
+          <Text>Phone:</Text>
+
+          <TextInput
+            style={styles.input}
+            value={phone}
+            onChangeText={(text) => setPhone(text)}
+          />
+          <Text style={styles.errorText}>{phoneError}</Text>
         </View>
         <View style={styles.checkBox}>
-        <Checkbox
-          value={isChecked}
-          onValueChange={(value) => setIsChecked(value)}
-        />
-        <Text>I agree to the terms and conditions</Text>
+          <Checkbox
+            value={isChecked}
+            onValueChange={(value) => setIsChecked(value)}
+          />
+          <Text>I agree to the terms and conditions</Text>
         </View>
         <View style={styles.buttonContainer}>
-        <Button
-          title="Reset"
-          color={colors.reset}
-          onPress={handleReset}
-        />
-        
-        <Button
-          title="Start"
-          onPress={handleStart}
-          disabled={!isChecked}
-        />
+          <Button
+            title="Reset"
+            color={colors.reset}
+            onPress={handleReset}
+          />
+
+          <Button
+            title="Start"
+            onPress={handleStart}
+            disabled={!isChecked}
+          />
         </View>
 
-        
 
-        
+
+
       </Card>
     </View>
   )
@@ -132,24 +132,24 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     flex: 3,
-    alignItems:"stretch"
+    alignItems: "stretch"
 
   },
   checkBox: {
     flex: 1,
-    flexDirection:"row",
+    flexDirection: "row",
   },
   buttonContainer: {
     flex: 1,
-    flexDirection:"row",
-    alignItems:"center",
+    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-evenly"
   },
-  input:{
-    borderBottomWidth: 1, 
+  input: {
+    borderBottomWidth: 1,
     borderBottomColor: 'gray'
 
-}
+  }
 
 
 

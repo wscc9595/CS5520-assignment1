@@ -12,7 +12,6 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
-
   function validateName() {
     if (!name || name.length <= 1 || /\d/.test(name)) {
       setNameError('Please enter a valid name.');
@@ -41,21 +40,14 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
       return true
     }
   }
-
-
   function handleStart() {
     validateName();
     validateEmail();
     validatePhone();
     if (validateName() && validateEmail() && validatePhone() && isChecked) {
-
       handleCurrentPage("Confirm");
       handleUserInfo({ name, email, phone });
     }
-
-
-
-
   }
   function handleReset() {
     setName('');
@@ -77,7 +69,6 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
             onChangeText={(text) => setName(text)}
           />
           <Text style={styles.errorText}>{nameError}</Text>
-
           <Text>Email:</Text>
           <TextInput
             style={styles.input}
@@ -85,9 +76,7 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
             onChangeText={(text) => setEmail(text)}
           />
           <Text style={styles.errorText}>{emailError}</Text>
-
           <Text>Phone:</Text>
-
           <TextInput
             style={styles.input}
             value={phone}
@@ -108,24 +97,17 @@ const Start = ({ handleCurrentPage, handleUserInfo, userInfo }) => {
             color={colors.reset}
             onPress={handleReset}
           />
-
           <Button
             title="Start"
             onPress={handleStart}
             disabled={!isChecked}
           />
         </View>
-
-
-
-
       </Card>
     </View>
   )
 }
-
 export default Start
-
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -133,7 +115,6 @@ const styles = StyleSheet.create({
   inputBox: {
     flex: 3,
     alignItems: "stretch"
-
   },
   checkBox: {
     flex: 1,
@@ -148,9 +129,5 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 1,
     borderBottomColor: 'gray'
-
   }
-
-
-
 })

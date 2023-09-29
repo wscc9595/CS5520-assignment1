@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from "../colors"
-
 const Card = ({ children }) => {
   return (
     <View style={styles.card}>
@@ -9,9 +8,7 @@ const Card = ({ children }) => {
     </View>
   )
 }
-
 export default Card
-
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.card,

@@ -3,7 +3,6 @@ import React from 'react'
 import Card from '../components/Card';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../colors';
-
 const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
     function onBack() {
         handleCurrentPage("Start");
@@ -11,7 +10,6 @@ const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
     function onContinue() {
         handleCurrentPage("Game");
         generateNum();
-
     }
     return (
         <View style={styles.container}>
@@ -27,36 +25,25 @@ const Confirm = ({ visible, userInfo, handleCurrentPage, generateNum }) => {
                             <Text style={styles.infoConfirm}>Email: {userInfo.email}</Text>
                             <Text style={styles.infoConfirm}>Phone: {userInfo.phone}</Text>
                         </View>
-
                         <View style={styles.buttonBox}>
                             <Button title="Go back" color={colors.reset} onPress={onBack} />
                             <Button title="Continue" onPress={onContinue} />
                         </View>
-
                     </Card>
                 </LinearGradient>
             </Modal>
         </View>
-
-
-
-
-
     )
 }
-
 export default Confirm
-
 const styles = StyleSheet.create({
     confirmContainer: {
         justifyContent: "center",
         flex: 1,
         alignItems: 'center',
-
     },
     confirmCard: {
         alignItems: "stretch"
-
     },
     buttonBox: {
         flex: 1,
@@ -70,7 +57,5 @@ const styles = StyleSheet.create({
     },
     infoConfirm: {
         color: colors.info,
-
     }
-
 })

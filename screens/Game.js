@@ -2,21 +2,15 @@ import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card';
 import { colors } from '../colors';
-
 const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, resetNum }) => {
     const [userGuess, setUserGuess] = useState("");
     const [currentState, setCurrentState] = useState("inProgress");
     const [count, setCount] = useState(0);
-
-
-
     function onLogOut() {
         handleCurrentPage("Start");
         handleUserInfo({});
         resetNum();
-
     }
-
     function onReset() {
         setUserGuess("");
     }
@@ -27,12 +21,10 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
         } else {
             setCurrentState("inCorrect");
         }
-
     }
     function onTryAgain() {
         setCurrentState("inProgress");
         onReset();
-
     }
     function onNewGame() {
         setCurrentState("inProgress");
@@ -43,24 +35,19 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
     if (currentState == 'inProgress') {
         return (
             <View style={styles.container}>
-
-                <Text>Game{randomNumber}</Text>
+                {/* <Text>Game{randomNumber}</Text> */}
                 <View style={styles.logoutButtonContainer}>
                     <Button title='Logout' onPress={onLogOut} ></Button>
                 </View>
                 <Text style={styles.game}>Please guess a number between 10 and 20.</Text>
                 <Card>
                     <View style={styles.prompt}><Text>Enter a number</Text></View>
-
-
                     <TextInput style={styles.input} value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
                     <View style={styles.buttonBox}>
                         <Button title='Reset' color={colors.reset} onPress={onReset}></Button>
                         <Button title='Confirm' onPress={onConfirm}></Button>
                     </View>
-
                 </Card>
-
             </View>
         )
     }
@@ -75,13 +62,10 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                         <Text style={styles.incorrect}>incorrect</Text>
                         <Image style={styles.image} source={require("../assets/sad.jpeg")} />
                     </View>
-
                     <View style={styles.try}>
                         <Button title='Try Again' onPress={onTryAgain}></Button>
                     </View>
-
                 </Card>
-
             </View>
         )
     }
@@ -100,14 +84,11 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
                         <Button title='New Game' onPress={onNewGame}></Button>
                     </View>
                 </Card>
-
             </View>
         )
     }
 }
-
 export default Game
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -139,7 +120,6 @@ const styles = StyleSheet.create({
         borderBottomColor: 'gray',
         paddingHorizontal: 10,
         margin: 100
-
     },
     incorrectInfo: {
         flex: 2,
@@ -148,10 +128,9 @@ const styles = StyleSheet.create({
     },
     try: {
         flex: 1
-
     },
     game: {
-        font: 24,
+        fontSize: 15,
         fontWeight: 'bold',
         margin: 10,
     },

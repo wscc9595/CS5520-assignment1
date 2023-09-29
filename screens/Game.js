@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native'
+import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
 
 const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, resetNum}) => {
     const [userGuess, setUserGuess] = useState("");
     const [currentState, setCurrentState] = useState("inProgress");
     const [count, setCount] = useState(0);
+    
 
     
     function onLogOut() {
@@ -39,10 +40,15 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
     }
     if(currentState == 'inProgress'){
         return (
-            <View>
+            <View style={styles.container}>
     
                 <Text>Game{randomNumber}</Text>
-                <Button title='Logout' onPress={onLogOut}></Button>
+                <View style={styles.logoutButtonContainer}>
+                <Button title='Logout' onPress={onLogOut} ></Button>
+                </View>
+                <Text>Please guess a number between 10 and 20.</Text>
+                <Text>Enter a number</Text>
+                
                 <TextInput value={userGuess} onChangeText={(text) => setUserGuess(text)}></TextInput>
                 <Button title='Reset' onPress={onReset}></Button>
                 <Button title='Confirm' onPress={onConfirm}></Button>
@@ -53,6 +59,7 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
         return (
             <View>
                 <Text>"incorrect"</Text>
+                <Image style={styles.image} source={require("../assets/sad.jpeg")} />
                 <Button title='Try Again' onPress={onTryAgain}></Button>
             </View>
         )
@@ -60,7 +67,8 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
     if(currentState == 'correct'){
         return (
             <View>
-                <Text>"correct{count}"</Text>
+                <Text>"You're correct through {count} guesses."</Text>
+                <Image style={styles.image} source={{uri: 'https://picsum.photos/id/${randomNumber}/100/100'}} />
                 <Button title='New Game' onPress={onNewGame}></Button>
             </View>
         )
@@ -69,4 +77,19 @@ const Game = ({ handleCurrentPage, handleUserInfo, randomNumber, generateNum, re
 
 export default Game
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      logoutButtonContainer: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+      },
+      image: {
+        width: 100,
+        height: 100,
+      },
+})
